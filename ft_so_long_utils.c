@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_so_long.h                                       :+:      :+:    :+:   */
+/*   ft_so_long_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 14:31:51 by kquispe           #+#    #+#             */
-/*   Updated: 2024/02/01 15:42:18 by kquispe          ###   ########.fr       */
+/*   Created: 2024/02/01 15:37:25 by kquispe           #+#    #+#             */
+/*   Updated: 2024/02/01 15:41:01 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SO_LONG_H
-# define FT_SO_LONG_H
+#include "ft_so_long.h"
 
-#include <mlx.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <stddef.h>
+char    *ft_strchr(const char *s, int c)
+{
+        size_t  i;
+        char    *temp;
 
-//FT_UTILS
-char    *ft_strchr(const char *s, int c);
-
-//FT_SO_LONG
-int	check_input(char *input);
-int	message_error(int n);
-int	check_errors(int argc, char *argv);
-
-#endif
+        i = 0;
+        temp = (char *)s;
+        while (temp[i])
+        {
+                if (temp[i] == (char)c)
+                        return (temp + i);
+                i++;
+        }
+        if (temp[i] == (char)c)
+                return (temp + i);
+        return (0);
+}
