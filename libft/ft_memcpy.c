@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_so_long.h                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 14:31:51 by kquispe           #+#    #+#             */
-/*   Updated: 2024/02/07 13:52:00 by kquispe          ###   ########.fr       */
+/*   Created: 2023/09/13 12:33:44 by kquispe           #+#    #+#             */
+/*   Updated: 2023/11/17 21:35:29 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SO_LONG_H
-# define FT_SO_LONG_H
+#include "libft.h"
 
-#include "mlx_linux/mlx.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <stddef.h>
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
 
-//FT_UTILS
-char    *ft_strchr(const char *s, int c);
-
-//FT_SO_LONG
-int	check_input(char *input);
-int	message_error(int n);
-int	check_errors(int argc, char *argv);
-
-#endif
+	if (!dest && !src)
+		return (NULL);
+	i = 0;
+	str1 = (unsigned char *)dest;
+	str2 = (unsigned char *)src;
+	while (i < n)
+	{
+		str1[i] = str2[i];
+		i++;
+	}
+	return (str1);
+}

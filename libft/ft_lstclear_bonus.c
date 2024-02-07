@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_so_long.h                                       :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 14:31:51 by kquispe           #+#    #+#             */
-/*   Updated: 2024/02/07 13:52:00 by kquispe          ###   ########.fr       */
+/*   Created: 2023/10/15 12:44:44 by kquispe           #+#    #+#             */
+/*   Updated: 2023/10/17 16:35:38 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SO_LONG_H
-# define FT_SO_LONG_H
+#include "libft.h"
 
-#include "mlx_linux/mlx.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <stddef.h>
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*temp;
 
-//FT_UTILS
-char    *ft_strchr(const char *s, int c);
-
-//FT_SO_LONG
-int	check_input(char *input);
-int	message_error(int n);
-int	check_errors(int argc, char *argv);
-
-#endif
+	while (*(lst))
+	{
+		temp = (*lst)->next;
+		del((*lst)->content);
+		free((*lst));
+		(*lst) = temp;
+	}
+}

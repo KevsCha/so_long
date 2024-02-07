@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_so_long.h                                       :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 14:31:51 by kquispe           #+#    #+#             */
-/*   Updated: 2024/02/07 13:52:00 by kquispe          ###   ########.fr       */
+/*   Created: 2023/10/14 19:32:31 by kquispe           #+#    #+#             */
+/*   Updated: 2023/10/24 17:09:09 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SO_LONG_H
-# define FT_SO_LONG_H
+#include "libft.h"
 
-#include "mlx_linux/mlx.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <stddef.h>
-
-//FT_UTILS
-char    *ft_strchr(const char *s, int c);
-
-//FT_SO_LONG
-int	check_input(char *input);
-int	message_error(int n);
-int	check_errors(int argc, char *argv);
-
-#endif
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}

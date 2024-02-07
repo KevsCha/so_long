@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_so_long.h                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 14:31:51 by kquispe           #+#    #+#             */
-/*   Updated: 2024/02/07 13:52:00 by kquispe          ###   ########.fr       */
+/*   Created: 2023/10/13 13:13:15 by kquispe           #+#    #+#             */
+/*   Updated: 2023/10/17 16:40:16 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SO_LONG_H
-# define FT_SO_LONG_H
+#include "libft.h"
 
-#include "mlx_linux/mlx.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <stddef.h>
-
-//FT_UTILS
-char    *ft_strchr(const char *s, int c);
-
-//FT_SO_LONG
-int	check_input(char *input);
-int	message_error(int n);
-int	check_errors(int argc, char *argv);
-
-#endif
+void	ft_putendl_fd(char *s, int fd)
+{
+	while (*s)
+	{
+		write(fd, &(*s), 1);
+		s++;
+	}
+	write(fd, "\n", 1);
+}

@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_so_long.h                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 14:31:51 by kquispe           #+#    #+#             */
-/*   Updated: 2024/02/07 13:52:00 by kquispe          ###   ########.fr       */
+/*   Created: 2023/10/01 15:28:33 by kquispe           #+#    #+#             */
+/*   Updated: 2023/10/24 12:51:05 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SO_LONG_H
-# define FT_SO_LONG_H
+#include "libft.h"
 
-#include "mlx_linux/mlx.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <stddef.h>
+char	*ft_strnstr(const char *str1, const char *str2, size_t num)
+{
+	size_t	i;
+	size_t	n;
 
-//FT_UTILS
-char    *ft_strchr(const char *s, int c);
-
-//FT_SO_LONG
-int	check_input(char *input);
-int	message_error(int n);
-int	check_errors(int argc, char *argv);
-
-#endif
+	i = 0;
+	if (!str2[0])
+		return ((char *)str1);
+	while (str1[i] && i < num)
+	{
+		n = 0;
+		while (str1[i + n] == str2[n] && str1[i + n] && (i + n) < num)
+			n++;
+		if (str2[n] == '\0')
+			return ((char *)str1 + i);
+		i++;
+	}
+	return (0);
+}

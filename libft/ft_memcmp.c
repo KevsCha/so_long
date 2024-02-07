@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_so_long.h                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 14:31:51 by kquispe           #+#    #+#             */
-/*   Updated: 2024/02/07 13:52:00 by kquispe          ###   ########.fr       */
+/*   Created: 2023/10/01 15:40:01 by kquispe           #+#    #+#             */
+/*   Updated: 2023/10/17 19:08:30 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SO_LONG_H
-# define FT_SO_LONG_H
+#include "libft.h"
 
-#include "mlx_linux/mlx.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <stddef.h>
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	char	*cmp1;
+	char	*cmp2;
+	size_t	i;
 
-//FT_UTILS
-char    *ft_strchr(const char *s, int c);
-
-//FT_SO_LONG
-int	check_input(char *input);
-int	message_error(int n);
-int	check_errors(int argc, char *argv);
-
-#endif
+	cmp1 = (char *)s1;
+	cmp2 = (char *)s2;
+	i = 0;
+	if (!n)
+		return (0);
+	while (i + 1 < n)
+	{
+		if (cmp1[i] != cmp2[i])
+			return ((unsigned char)cmp1[i] - (unsigned char)cmp2[i]);
+		i++;
+	}
+	return ((unsigned char)cmp1[i] - (unsigned char)cmp2[i]);
+}
