@@ -6,7 +6,7 @@
 #    By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 14:27:22 by kquispe           #+#    #+#              #
-#    Updated: 2024/02/07 16:28:37 by kquispe          ###   ########.fr        #
+#    Updated: 2024/02/08 21:58:29 by kquispe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,30 +16,33 @@ SO_LONGH = ft_so_long.h
 CCFLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -L /usr/local/lib/ -lmlx
 FW_FLAGS = -framework OpenGL -framework AppKit
+LFT_FLAGS = -L libft/ -lft
+
+MLX_FL_LX = -L mlx_linux/ -lmlx -lX11 -lXext -lm
 
 SO := $(shell uname)
-LIBFT_DIR = libft/
+LFT_DIR = libft/
 
 SRC = ft_so_long.c ft_check_error.c ft_so_long_utils.c
 OBJ = $(SRC:.c=.o)
 
 # Apartado para linux
 ifeq ($(SO),Linux)
-	CMD_SO = gcc $(CCFLAGS) $(OBJ) -o $(NAME)
+	CMD_SO = gcc $(CCFLAGS) $(OBJ) $(LFT_FLAGS) $(MLX_FL_LX) -o $(NAME)
 else
-	CMD_SO = gcc $(CCFLAGS) $(OBJ) $(MLX_FLAGS) $(FW_FLAGS) -o $(NAME)
+	CMD_SO = gcc $(CCFLAGS) $(OBJ) $(LFT_FLAGS) $(MLX_FLAGS) $(FW_FLAGS) -o $(NAME)
 endif
 
-all: libft
+all: libft $(NAME)
 
 $(NAME): $(OBJ) $(SO_LONGH)
 	$(CMD_SO)
 	
-libft: $(LIBFT_DIR)/Makefile
-	@make -C $(LIBFT_DIR)
+libft: $(LFT_DIR)/Makefile
+	@make -C $(LFT_DIR)
 
 clean:
-	@make -C $(LIBFT_DIR) clean
+	@make -C $(LFT_DIR) clean
 	@rm -f $(OBJ)
 	
 fclean:

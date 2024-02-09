@@ -6,7 +6,7 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:46:25 by kquispe           #+#    #+#             */
-/*   Updated: 2024/02/01 16:10:30 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/02/08 22:47:54 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,8 @@ int	check_input(char *input)
 	
 	if (!(str = ft_strchr(input, '.')))
 		return (1);
-	while (*str)
-	{
-		printf("%c", *str);
-		if (!ft_strchr(".ber", *str))
-			return (1);
-		str++;	
-	}
+	if (ft_strncmp(str, ".ber", sizeof(str)) != 0 || ft_strlen(str) != 4)
+		return (1);
 	return (0);
 }
 int	check_errors(int argc, char *argv)
