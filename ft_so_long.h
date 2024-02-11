@@ -6,14 +6,16 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:31:51 by kquispe           #+#    #+#             */
-/*   Updated: 2024/02/08 21:27:15 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/02/11 12:17:40 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SO_LONG_H
 # define FT_SO_LONG_H
 
-#include "mlx_linux/mlx.h"
+// esta biblioteca se cambia dependiendo el sistema operativo
+
+#include <mlx.h>
 #include "libft/libft.h"
 #include <stdio.h>
 #include <stdlib.h>
