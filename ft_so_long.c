@@ -6,7 +6,7 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:30:39 by kquispe           #+#    #+#             */
-/*   Updated: 2024/02/11 13:44:59 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/02/13 16:52:32 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int main (int argc, char **argv)
 
 	if ((check = check_errors(argc, argv[1])) == 1)
 		return (1);
-	
+	printf ("\nsigue con el proyecto");
+	//system ("leaks game.out");
+	/*
 	void *mlx_ptr;
 	void *win_ptr;
 	void *img_ptr;
@@ -37,7 +39,7 @@ int main (int argc, char **argv)
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, 0, 0);
 	
 	mlx_loop(mlx_ptr);
-	
+	*/
 	
 	
 	return (0);

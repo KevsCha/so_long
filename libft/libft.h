@@ -6,22 +6,39 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:56:43 by kquispe           #+#    #+#             */
-/*   Updated: 2023/10/17 17:11:12 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/02/13 15:47:55 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+//# include <fcntl.h>
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+//gnl
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
+char	*get_next_line(int fd);
+char	*gnl_ft_strjoin(char *s1, char *s2);
+void	*gnl_ft_calloc(size_t num, size_t bit);
+char	*gnl_ft_strchr(char *s, int c);
+size_t	gnl_ft_strlen(const char *str);
+
+//libft function
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t num, size_t bit);
 void	*ft_memchr(const void *ptr, int c, size_t num);
@@ -44,7 +61,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strdup(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlcat(char *dest, char *src, size_t size);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);

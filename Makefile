@@ -6,7 +6,7 @@
 #    By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 14:27:22 by kquispe           #+#    #+#              #
-#    Updated: 2024/02/08 21:58:29 by kquispe          ###   ########.fr        #
+#    Updated: 2024/02/13 15:41:36 by kquispe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ MLX_FL_LX = -L mlx_linux/ -lmlx -lX11 -lXext -lm
 
 SO := $(shell uname)
 LFT_DIR = libft/
+GNL_DIR = gnl/
 
 SRC = ft_so_long.c ft_check_error.c ft_so_long_utils.c
 OBJ = $(SRC:.c=.o)
@@ -33,13 +34,14 @@ else
 	CMD_SO = gcc $(CCFLAGS) $(OBJ) $(LFT_FLAGS) $(MLX_FLAGS) $(FW_FLAGS) -o $(NAME)
 endif
 
-all: libft $(NAME)
+all: libft gnl $(NAME)
 
 $(NAME): $(OBJ) $(SO_LONGH)
 	$(CMD_SO)
 	
 libft: $(LFT_DIR)/Makefile
 	@make -C $(LFT_DIR)
+gnl: $(GNL_DIR)
 
 clean:
 	@make -C $(LFT_DIR) clean
