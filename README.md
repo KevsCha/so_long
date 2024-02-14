@@ -93,7 +93,37 @@ mapa2.ber
     3. Movimientos de teclas (W, S, A, D) => (Arriba, Abajo, Izquierda, Derecha)
     4. El jugador no puede atravesar paredes.
     5. Mostrar movimientos en una terminal
-    
+
+## Funciones de mlx
+
+| Funcion | Que Hace       | Como funciona           |
+| :------ | :------------- | :---------------------- |
+| **BASICO**|
+| `void	*mlx_init()`  |  **INICIA** la coneccion con el servido grafico del sistema |   |
+| `void	*mlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title)`  | Crea una ventana | Esta funcion devuelve un puntero |
+| `int	mlx_clear_window(void *mlx_ptr, void *win_ptr)`  | Se utiliza esta funcion para limpiar un ventana (borrar todos los pixels)  |   |
+| `int	mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color)`  | Dibuja un pixel  |   |
+**IMAGEN**
+| `void	*mlx_new_image(void *mlx_ptr,int width,int height)`| Crea una imagen en memoria |   |
+| `char	*mlx_get_data_addr(void *img_ptr, int *bits_per_pixel, int *size_line, int *endian)` | Obtiene informacion sobre una imagen  |   |
+| `int	mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y)`  | Dibuja una imagen en la pantalla |   |
+| `int	mlx_get_color_value(void *mlx_ptr, int color)` | Se utiliza para obtener el valor del color |   |
+|**EVENTOS**|
+| `int	mlx_mouse_hook (void *win_ptr, int (*funct_ptr)(), void *param)` | Es evento o accion de mouse |   |
+| `int	mlx_key_hook (void *win_ptr, int (*funct_ptr)(), void *param)`  | Un evento o accion al presionar una tecla  |   |
+| `int	mlx_expose_hook (void *win_ptr, int (*funct_ptr)(), void *param)`  |   |   |
+| `int	mlx_loop (void *mlx_ptr)`| Hace que la ventana creada siga abierta y gestiona los eventos que ocurren en ella  |   |
+| `int mlx_loop_end (void *mlx_ptr)` | Se encarga de finaliza a la funcion **mlx_loop**  |   |
+| `int	mlx_string_put(void *mlx_ptr, void *win_ptr, int x, int y, int color, char *string)` | Escribe un texto dentro de la pantalla |   |
+| ` `  |   |   |
+| `s`  |   |   |
+| `s`  |   |   |
+| `s`  |   |   |
+| `s`  |   |   |
+| `s`  |   |   |
+| `s`  |   |   |
+
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
