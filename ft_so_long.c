@@ -6,7 +6,7 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:30:39 by kquispe           #+#    #+#             */
-/*   Updated: 2024/02/13 16:52:32 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/02/16 01:24:37 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int main (int argc, char **argv)
 {
 	int	check;
 	int x,y;
+	t_map mapa;
 
-	if ((check = check_errors(argc, argv[1])) == 1)
+	if ((check = check_errors(argc, argv[1], &mapa)) == 1)
 		return (1);
 	printf ("\nsigue con el proyecto");
 	//system ("leaks game.out");

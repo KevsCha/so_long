@@ -6,7 +6,7 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:31:51 by kquispe           #+#    #+#             */
-/*   Updated: 2024/02/13 17:35:54 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/02/16 01:37:44 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 // esta biblioteca se cambia dependiendo el sistema operativo
 
-#include <mlx.h>
+#include "mlx_linux/mlx.h"
 #include "libft/libft.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,15 +27,24 @@ typedef struct s_img
 	
 }	t_img;
 
+typedef struct s_player
+{
+	int	pos_x;
+	int	pos_y;
+	int	points;
+	
+}	t_player;
+
 
 typedef struct s_map
 {
-	int		weight;
-	int 	heigth;
 	int		row;
 	int		column;
+	int		exit;
+	int		players;
+	int		num_check_points;
 	char	**map;
-	
+	t_player	player;
 }	t_map;
 
 
@@ -45,8 +54,8 @@ typedef struct s_map
 //FT_SO_LONG
 int	check_input(char *input);
 int	message_error(int n);
-int	check_errors(int argc, char *argv);
-int	check_map(char *name_map);
+int	check_errors(int argc, char *argv, t_map *mapa);
+int	check_map(char *name_map, t_map *mapa);
 int	check_map_lines(int row, char *str_row);
 
 #endif

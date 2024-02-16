@@ -6,7 +6,7 @@
 #    By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 14:27:22 by kquispe           #+#    #+#              #
-#    Updated: 2024/02/13 15:41:36 by kquispe          ###   ########.fr        #
+#    Updated: 2024/02/14 16:53:31 by kquispe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,14 +34,13 @@ else
 	CMD_SO = gcc $(CCFLAGS) $(OBJ) $(LFT_FLAGS) $(MLX_FLAGS) $(FW_FLAGS) -o $(NAME)
 endif
 
-all: libft gnl $(NAME)
+all: libft $(NAME)
 
 $(NAME): $(OBJ) $(SO_LONGH)
 	$(CMD_SO)
 	
 libft: $(LFT_DIR)/Makefile
 	@make -C $(LFT_DIR)
-gnl: $(GNL_DIR)
 
 clean:
 	@make -C $(LFT_DIR) clean

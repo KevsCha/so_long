@@ -6,7 +6,7 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:46:25 by kquispe           #+#    #+#             */
-/*   Updated: 2024/02/13 19:05:18 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/02/16 01:40:53 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,32 @@ int	check_input(char *input)
 int	check_map_lines(int num_row, char *str_row)
 {
 	int	i;
-	int start;
+	static int stc_start;
 	char *temp;
 	
 	i = 0;
 	//utilizar strchr para comparar el numero de caracteres de la primera y la ultima linea 
 	//intetar comparar los caracteres de los costados si son muros
-	if (!ft_strchr(str_row, '\n'))
-		printf("%s", str_row);
-	else
-		printf("%d__%s", num_row, str_row);
-	if (num_row == 1)
+	if (num_row == 0)
 	{	
-		start = ft_strlen(str_row);
+		stc_start = ft_strlen(str_row);
+		printf("%s", str_row);
 		while (str_row[i] && str_row[i] == '1')
 			i++;
 	}
 	
+	if (!ft_strchr(str_row, '\n'))
+	{
+		printf("%d==%zu", stc_start, ft_strlen(str_row) + 1);
+	}	
+	else
+		printf("%d__%s", num_row, str_row);
 	
 	return (0);
 }
-int	check_map(char *name_map)
+//Trabajar con la direccion de memoria para guardar la primera fila
+//	y verificar la cantidad de caracteres con las demas filas.
+int	check_map(char *name_map, t_map *mapa)
 {
 	int	fd;
 	int	i;
@@ -72,12 +77,13 @@ int	check_map(char *name_map)
 		free(str_map);
 		i++;
 	}
+	close(fd);
 	//error si el mapa es de 3 filas 
 	if (i <= 2)
 		return (1);
 	return (0);
 }
-int	check_errors(int argc, char *argv)
+int	check_errors(int argc, char *argv, t_map *mapa)
 {
 	//evalua el numero de argumentos de entrada
 	if (argc != 2)
@@ -86,8 +92,12 @@ int	check_errors(int argc, char *argv)
 	if (check_input(argv) == 1)
 		return (message_error(2));
 	//Evalua si el mapa es rectangular
-	if (check_map(argv) == 1)
+	if (check_map(argv, &mapa) == 1)
 		return (message_error(3));
-	printf("\n[num de argms]: %d\n[Entrada]: %s", argc, argv);
 	return (0);
 }
+//[FUNCION check_map] = se le pasa la direccion de memoria por lo
+//	su firma deberea ser con el puntero que indica que recibe una 
+//	direccion de memoria, esto en el caso de querere modificar el valor
+// 	de una variable desde otras funciones sin tener que devolver ese
+//	mismo valor
